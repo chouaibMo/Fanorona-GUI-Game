@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.PlateauController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+        <children>
+          <AnchorPane fx:id="plateau" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Ressources/wooden_top.jpg" />
+                     </image>
+                  </ImageView>
+                  <Pane fx:id="panePlateau" layoutX="60.0" layoutY="60.0" prefHeight="282.0" prefWidth="508.0">
+                     <children>
+                        <Canvas fx:id="canvas" height="282.0" nodeOrientation="INHERIT" width="508.0" />
+                     </children>
+                  </Pane>
+                  <HBox alignment="TOP_CENTER" layoutX="50.0" layoutY="350.0" prefHeight="49.0" prefWidth="508.0" spacing="150.0">
+                     <children>
+                        <HBox prefHeight="49.0" prefWidth="145.0" spacing="5.0">
+                           <children>
+                              <ImageView fx:id="btnAnnuler" fitHeight="43.0" fitWidth="43.0" onMouseClicked="#handleBtnAnnuler" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Ressources/previous.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="btnValider" fitHeight="49.0" fitWidth="43.0" onMouseClicked="#handleBtnValider" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Ressources/ok2.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="btnRefaire" fitHeight="43.0" fitWidth="43.0" onMouseClicked="#handleBtnRefaire" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Ressources/next.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="49.0" prefWidth="97.0">
+                           <children>
+                              <ImageView fx:id="btnRegles" fitHeight="43.0" fitWidth="43.0" onMouseClicked="#handleBtnRegles" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Ressources/info.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="btnPause" accessibleHelp="Pause" accessibleText="Pause" cache="true" fitHeight="43.0" fitWidth="43.0" onMouseClicked="#handleBtnPause">
+                                 <image>
+                                    <Image url="@../Ressources/pause.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="btnParametre" fitHeight="43.0" fitWidth="47.0" onMouseClicked="#handleBtnParametre" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../Ressources/setting.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" layoutY="5.0" prefHeight="34.0" prefWidth="600.0" spacing="250.0">
+                     <children>
+                        <Label fx:id="label1" text="player" textFill="#f9ff2f">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label id="label2" fx:id="label2" text="player" textFill="#3aa7db">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+          </AnchorPane>
+        </children>
+      </VBox>
+      <DialogPane fx:id="dialogPanePause" layoutX="120.0" layoutY="100.0" prefHeight="146.0" prefWidth="360.0" visible="false">
+         <content>
+            <HBox alignment="TOP_CENTER" prefHeight="140.0" prefWidth="360.0" spacing="10.0">
+               <children>
+                  <ImageView fx:id="btnChoixJoueur" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#handleBtnChoixJoueur" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Ressources/game.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="3.0" top="18.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="btnSave" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#handleBtnSave" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Ressources/save.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="btnRestart" fitHeight="70.0" fitWidth="75.0" onMouseClicked="#handleBtnRestart" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Ressources/restart.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="btnReprendre" fitHeight="70.0" fitWidth="70.0" onMouseClicked="#handleReprendre" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Ressources/play.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+         </content>
+      </DialogPane>
+      <DialogPane fx:id="dialogPaneRegles" layoutX="50.0" layoutY="40.0" prefHeight="274.0" prefWidth="488.0" visible="false">
+         <header>
+            <AnchorPane prefHeight="210.0" prefWidth="488.0">
+               <children>
+                  <TabPane prefHeight="211.0" prefWidth="478.0" tabClosingPolicy="UNAVAILABLE">
+                     <tabs>
+                        <Tab text="Presentation">
+                           <content>
+                              <AnchorPane layoutX="10.0" minHeight="0.0" minWidth="0.0" prefHeight="201.0" prefWidth="478.0">
+                                 <children>
+                                    <VBox prefHeight="180.0" prefWidth="477.0">
+                                       <children>
+                                          <TextArea editable="false" prefHeight="180.0" prefWidth="461.0" text="Le plateau est composé de 2 camps adverses, de 5 rangs et 9 colonnes sur lequel est disposé 22 pions pour chaque Joueur.&#10;&#10;L'intersection centrale reste libre au depart pour permettre l'ouverture.&#10;&#10;Le but du jeu est de capturer tous les pions de l'adversaire." wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Déplacement">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="203.0" prefWidth="478.0">
+                                 <children>
+                                    <VBox prefHeight="191.0" prefWidth="475.0">
+                                       <children>
+                                          <TextArea editable="false" prefHeight="191.0" prefWidth="475.0" text="Le déplacement se fait toujours d'une intersection à une autre, à condition que l'intersection de destination soit inoccupée.&#10;&#10;Le déplacement peut se faire dans n'importe quelle direction, sur les différents axes horizontaux, verticaux ou diagonaux.&#10;&#10;Un déplacement peut étre un mouvement simple ou une capture (qui est obligatoire quand elle est possible.&#10;" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Capture">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="479.0">
+                                 <children>
+                                    <VBox prefHeight="182.0" prefWidth="480.0">
+                                       <children>
+                                          <TextArea editable="false" prefHeight="181.0" prefWidth="480.0" text="Il y a deux façons de capturer les pions adverses:&#10;    *Par percussion (en s'approchant)&#10;    *Par aspiration (en s'éloignant)&#10;&#10;Tous les pions alignés et adjacents (sans écart) sur la même ligne seront capturés.&#10;&#10;Dans certains cas, pour un seul déplacement, il est possible de choisir une capture soit par percussion soit par aspiration.&#10;" wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Capture multiple">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="208.0" prefWidth="479.0">
+                                 <children>
+                                    <VBox prefHeight="179.0" prefWidth="475.0">
+                                       <children>
+                                          <TextArea editable="false" prefHeight="179.0" prefWidth="475.0" text="Il est possible de faire un enchaînement de captures, à condition de ne pas repasser sur une intersection déja empruntée durant le même tour.&#10;&#10;Un mouvement deux fois dans la même direction n'est pas non plus autorisé.&#10;&#10;Cependant, il n'est pas obligatoire de capturer tous les pions accessibles, il s'agit alors d'un choix stratégique." wrapText="true">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextArea>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+         </header>
+         <content>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="56.0" prefWidth="488.0">
+               <children>
+                  <ImageView fx:id="btnRetourRegles" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleRetourRegles" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Ressources/previous.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </content>
+      </DialogPane>
+      <DialogPane fx:id="dialogPaneVictoire" layoutX="120.0" layoutY="67.0" prefHeight="243.0" prefWidth="360.0" visible="false">
+         <header>
+            <HBox alignment="CENTER" prefHeight="159.0" prefWidth="415.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" x="100.0" y="100.0">
+                     <image>
+                        <Image url="@../Ressources/win.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="nomJoueur" text="Joueur  " />
+                  <Label text=" a gagné !!" />
+               </children>
+            </HBox>
+         </header>
+         <content>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="61.0" prefWidth="377.0">
+               <children>
+                  <ImageView fx:id="btnExitVictoire" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleExitVictoire" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Ressources/exit2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnJouer" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleBtnJouer" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Ressources/game.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnreommencerPartieVictoire" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handlereommencerPartieVictoire" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Ressources/restart.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </content>
+      </DialogPane>
+      <DialogPane fx:id="dialogPaneSauvegarder" layoutX="120.0" layoutY="230.0" prefHeight="106.0" prefWidth="360.0" visible="false">
+         <content>
+            <Label fx:id="labelDone" alignment="CENTER" contentDisplay="CENTER" prefHeight="0.0" prefWidth="360.0" text="Vous avez sauvegardé la partie" textAlignment="CENTER" visible="false" />
+         </content>
+         <header>
+            <HBox prefHeight="44.0" prefWidth="360.0" spacing="30.0">
+               <children>
+                  <TextField fx:id="champSave" prefHeight="25.0" prefWidth="198.0">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <ImageView fx:id="btnValiderSave" fitHeight="42.0" fitWidth="113.0" onMouseClicked="#handlebtnValiderSave" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Ressources/valider.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </header>
+      </DialogPane>
+      <DialogPane fx:id="dialogPaneParametre" layoutX="120.0" layoutY="80.0" prefHeight="237.0" prefWidth="360.0" visible="false">
+         <header>
+            <HBox spacing="10.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="129.0" prefWidth="155.0" spacing="12.0">
+                     <children>
+                        <Label text="Mode Assisté">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="btnSound" fitHeight="44.0" fitWidth="50.0" onMouseClicked="#handleSound" pickOnBounds="true">
+                           <image>
+                              <Image url="@../Ressources/sound.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="3.0" left="10.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <ImageView fx:id="btnMusic" fitHeight="44.0" fitWidth="50.0" onMouseClicked="#handleMusic" pickOnBounds="true">
+                           <image>
+                              <Image url="@../Ressources/music.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="3.0" left="10.0" />
+                           </VBox.margin>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="129.0" prefWidth="160.0" spacing="20.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                           <children>
+                              <RadioButton fx:id="radioBtnOn" mnemonicParsing="false" onMouseClicked="#handleradioOn" selected="true" text="On">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="assist" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="radioBtnOff" mnemonicParsing="false" onMouseClicked="#handleRadioOff" text="Off" toggleGroup="$assist" />
+                           </children>
+                        </HBox>
+                        <Slider fx:id="sliderSound" minorTickCount="5" showTickLabels="true" showTickMarks="true">
+                           <VBox.margin>
+                              <Insets bottom="25.0" top="5.0" />
+                           </VBox.margin>
+                        </Slider>
+                        <Slider fx:id="sliderMusic">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Slider>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </header>
+         <content>
+            <VBox alignment="BOTTOM_RIGHT" prefHeight="56.0" prefWidth="360.0">
+               <children>
+                  <ImageView fx:id="btnRetour" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleRetour" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Ressources/previous.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </content>
+      </DialogPane>
+   </children>
+</AnchorPane>

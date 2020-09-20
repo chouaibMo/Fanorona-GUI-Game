@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" snapToPixel="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.ReglesController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="571.0">
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <VBox prefHeight="400.0" prefWidth="593.0">
+                     <children>
+                        <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../Ressources/background2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="80.0" fitWidth="180.0" layoutX="200.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../Ressources/regles.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <VBox layoutX="530.0" layoutY="290.0" prefHeight="110.0" prefWidth="70.0" spacing="5.0">
+         <children>
+            <ImageView fx:id="btnCommencer" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleCommencer" pickOnBounds="true">
+               <image>
+                  <Image url="@../Ressources/game.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="12.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="btnRetour" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#handleRetour" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/accueim.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="12.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="100.0" prefHeight="248.0" prefWidth="526.0">
+         <children>
+            <TabPane layoutX="10.0" layoutY="10.0" prefHeight="304.0" prefWidth="527.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Presentation">
+                  <content>
+                    <AnchorPane layoutX="10.0" minHeight="0.0" minWidth="0.0" prefHeight="254.0" prefWidth="527.0">
+                           <children>
+                              <VBox prefHeight="227.0" prefWidth="527.0">
+                                 <children>
+                                    <TextArea editable="false" prefHeight="216.0" prefWidth="527.0" text="Le plateau est composé de 2 camps adverses, de 5 rangs et 9 colonnes sur lequel est disposé 22 pions pour chaque Joueur.&#10;&#10;L'intersection centrale reste libre au depart pour permettre l'ouverture.&#10;&#10;Le but du jeu est de capturer tous les pions de l'adversaire." wrapText="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></TextArea>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Déplacement">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="253.0" prefWidth="527.0">
+                                 <children>
+                                    <TextArea editable="false" prefHeight="216.0" prefWidth="527.0" text="Le déplacement se fait toujours d'une intersection à une autre, à condition que l'intersection de destination soit inoccupée.&#10;&#10;Le déplacement peut se faire dans n'importe quelle direction, sur les différents axes horizontaux, verticaux ou diagonaux.&#10;&#10;Un déplacement peut étre un mouvement simple ou une capture (qui est obligatoire quand elle est possible.&#10;" wrapText="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></TextArea>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Capture">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="252.0" prefWidth="527.0">
+                                 <children>
+                                    <TextArea editable="false" prefHeight="216.0" prefWidth="527.0" text="Il y a deux façons de capturer les pions adverses:&#10;    *Par percussion (en s'approchant)&#10;    *Par aspiration (en s'éloignant)&#10;&#10;Tous les pions alignés et adjacents (sans écart) sur la même ligne seront capturés.&#10;&#10;Dans certains cas, pour un seul déplacement, il est possible de choisir une capture soit par percussion soit par aspiration.&#10;" wrapText="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></TextArea>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Capture multiple">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="251.0" prefWidth="527.0">
+                                 <children>
+                                    <TextArea editable="false" prefHeight="216.0" prefWidth="527.0" text="Il est possible de faire un enchaînement de captures, à condition de ne pas repasser sur une intersection déja empruntée durant le même tour.&#10;&#10;Un mouvement deux fois dans la même direction n'est pas non plus autorisé.&#10;&#10;Cependant, il n'est pas obligatoire de capturer tous les pions accessibles, il s'agit alors d'un choix stratégique." wrapText="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></TextArea>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
